@@ -8,6 +8,7 @@
           'round-bottom': bottom,
           'round-left': left,
           'round-right': right,
+          shadow: shadow,
         },
         'image-figure',
       ]"
@@ -41,19 +42,29 @@ export default {
       type: Boolean,
       default: false,
     },
+    shadow: {
+      type: Boolean,
+      default: false,
+    },
   },
 }
 </script>
 
 <style lang="scss">
+.shadow {
+  -webkit-box-shadow: 0px 10px 30px 0px rgba(34, 56, 80, 0.2);
+  -moz-box-shadow: 0px 10px 30px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 10px 30px 0px rgba(34, 60, 80, 0.2);
+}
 .image-container {
   width: 100%;
   height: 100%;
+
   .image-figure {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: rgba($color: #000000, $alpha: 0.2);
+    background: #fff;
   }
   .round-top {
     border-top-left-radius: 47%;

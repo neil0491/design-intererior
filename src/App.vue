@@ -7,6 +7,8 @@
     <ChooseUs />
     <DesignProcess />
     <Packages />
+    <Carousel />
+    <DesignFooter />
   </div>
 </template>
 
@@ -18,6 +20,8 @@ import Brands from "./components/Brands"
 import ChooseUs from "./components/ChooseUs"
 import DesignProcess from "./components/DesignProcess"
 import Packages from "./components/Packages"
+import Carousel from "./components/Carousel"
+import DesignFooter from "./components/Design-Footer"
 
 export default {
   name: "App",
@@ -29,6 +33,8 @@ export default {
     ChooseUs,
     DesignProcess,
     Packages,
+    Carousel,
+    DesignFooter,
   },
 }
 </script>

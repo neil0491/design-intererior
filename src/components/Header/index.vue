@@ -2,7 +2,7 @@
   <header class="container header">
     <div class="row">
       <div class="col-6">
-        <a class="header__logo" href="/"> Logo </a>
+        <a class="header__logo" href="/"> <Logo /> </a>
       </div>
       <div class="col-6">
         <ul class="list">
@@ -21,12 +21,16 @@
 </template>
 
 <script>
+import Logo from "../logo"
 export default {
   name: "Header",
+  components: {
+    Logo,
+  },
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .header {
   height: 110px;
   font-weight: 600;

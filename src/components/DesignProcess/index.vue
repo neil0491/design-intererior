@@ -93,9 +93,33 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../assets/scss/variables.scss";
+
 .dark-block {
   padding-top: 7.6rem;
   background-color: $primary-color;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 267px;
+    height: 160px;
+    background-image: url("/img/rectangels.svg");
+    background-repeat: no-repeat;
+    bottom: 0;
+    left: 0;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    width: 87px;
+    height: 174px;
+    background-image: url("/img/rectangels-up.svg");
+    background-repeat: no-repeat;
+    top: 0;
+    right: 0;
+    z-index: 0;
+  }
   &__right {
     margin-top: 9.5rem;
     margin-bottom: 7rem;

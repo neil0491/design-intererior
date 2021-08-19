@@ -24,15 +24,15 @@
         </div>
         <div class="col-3">
           <IterebleBlock
-            :number="1"
-            title="No hassle"
+            :number="2"
+            title="Saving"
             descr="Lorem, ipsum dolor adipisicing ipsum consectetur adipisicing elit. Officia vitae,onsectetur adipisicing amet"
           />
         </div>
         <div class="col-3">
           <IterebleBlock
-            :number="1"
-            title="No hassle"
+            :number="3"
+            title="Choice"
             descr="Lorem, ipsum dolor adipisicing ipsum consectetur adipisicing elit. Officia vitae,onsectetur adipisicing amet"
           />
         </div>
