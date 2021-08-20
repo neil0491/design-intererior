@@ -1,56 +1,73 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col-5">
-        <swiper
-          :slides-per-view="1"
-          @swiper="setFirstSwiper"
-          :controller="{ control: secondSwiper }"
-          effect="fade"
-        >
-          <swiper-slide v-for="slide in slideleft" :key="slide.id">
-            <div class="left-slide">
-              <TitleBlock
-                :fs="3.25"
-                :fw="900"
-                :fwDesc="700"
-                :title="slide.title"
-                :description="slide.descr"
-              >
-                <Button class="mt-4" primary :text="slide.button" />
-              </TitleBlock>
-              <ImageContainer
-                class="left-slide__image"
-                style="height: 495px"
-                bottom
-              >
-                <img :src="slide.img" alt="" srcset="" />
-              </ImageContainer>
-            </div>
-          </swiper-slide>
-        </swiper>
-      </div>
+    <div class="slider-row">
+      <div
+        class="row slider-row__wrapper"
+        v-for="(slide, index) in slides"
+        :key="index"
+      >
+        <div class="col-5">
+          <div class="left-slide" :class="activeSlide == index ? 'hidden' : ''">
+            <TitleBlock
+              :fs="3.25"
+              :fw="900"
+              :fwDesc="700"
+              :title="slide.title"
+              :description="slide.descr"
+            >
+              <Button class="mt-4" primary :text="slide.button" />
+            </TitleBlock>
+            <ImageContainer
+              class="left-slide__image"
+              style="height: 495px"
+              bottom
+            >
+              <img :src="slide.imgLeft" alt="" srcset="" />
+            </ImageContainer>
+          </div>
+        </div>
 
-      <div class="col-7 right-corousel">
-        <swiper
-          :slides-per-view="1"
-          @swiper="setSecondSwiper"
-          :controller="{ control: firstSwiper }"
-          navigation
-          :pagination="{ type: 'fraction' }"
-          :scrollbar="{ draggable: true }"
-          effect="fade"
-          noSwipingClass="swiper-no-swiping"
-        >
-          <swiper-slide v-for="(slide, index) in slideRight" :key="index">
-            <div class="right-slide">
-              <ImageContainer style="height: 775px" top>
-                <img :src="slide" alt="Slider" srcset="" />
-              </ImageContainer>
+        <div class="col-7 right-corousel">
+          <div
+            class="right-slide"
+            :class="activeSlide == index ? 'hidden' : ''"
+          >
+            <ImageContainer style="height: 775px" top>
+              <img :src="slide.imgRight" alt="Slider" srcset="" />
+            </ImageContainer>
+          </div>
+          <div>
+            <div class="d-flex">
+              <div class="right-corousel__control">Explore More</div>
+              <div class="carousel__button">
+                <button
+                  @click="prevSlide"
+                  :class="activeSlide !== 1 ? '' : 'btn-disable'"
+                  class="btn-change btn-prev"
+                ></button>
+                <button
+                  @click="nextSlide"
+                  :class="
+                    activeSlide !== this.slides.length ? '' : 'btn-disable'
+                  "
+                  class="btn-change btn-next"
+                ></button>
+              </div>
             </div>
-          </swiper-slide>
-        </swiper>
-        <div class="right-corousel__control">Explore More</div>
+            <div class="scroll-wrapper">
+              <div
+                class="scroll-wrapper__current"
+                :style="{
+                  width: 100 / slides.length + '%',
+                  left: (100 / slides.length) * (activeSlide - 1) + '%',
+                }"
+              ></div>
+            </div>
+            <div class="carousel-current">
+              <span>{{ activeSlide }}/{{ slides.length }}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -61,78 +78,87 @@ import TitleBlock from "../Title-Block/index.vue"
 import ImageContainer from "../Image-figure/index.vue"
 import Button from "../Button/Button.vue"
 
-// Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from "swiper/vue"
-import SwiperCore, {
-  Controller,
-  EffectFade,
-  Navigation,
-  Pagination,
-  Scrollbar,
-} from "swiper"
-SwiperCore.use([Controller, EffectFade, Navigation, Pagination, Scrollbar])
-
-import "swiper/swiper.scss"
-// import "swiper/components/navigation/navigation.scss"
-
-import "swiper/components/pagination/pagination.scss"
-import "swiper/components/scrollbar/scrollbar.scss"
-
 export default {
   name: "Slider",
-  components: { TitleBlock, ImageContainer, Button, Swiper, SwiperSlide },
+  components: { TitleBlock, ImageContainer, Button },
   data() {
     return {
-      firstSwiper: null,
-      secondSwiper: null,
-      slideleft: [
+      activeSlide: 1,
+      slides: [
         {
           id: 1,
-          img: "https://images.pexels.com/photos/3356416/pexels-photo-3356416.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-          title: "Take our style quiz",
+          imgLeft:
+            "https://images.pexels.com/photos/4352247/pexels-photo-4352247.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+          imgRight:
+            "https://images.pexels.com/photos/2826787/pexels-photo-2826787.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+          title: "Take our style ",
           descr:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis nemo repellat sequi  unde earum.",
-          button: "Get Started",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis nemo repellat unde earum.",
+          button: "All Process",
         },
         {
           id: 2,
-          img: "https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-          title: "Office Design Made Affordable.",
+          imgLeft:
+            "https://images.pexels.com/photos/245208/pexels-photo-245208.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+          imgRight:
+            "https://images.pexels.com/photos/3773579/pexels-photo-3773579.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+          title: "Take our toure style",
           descr:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit.Perferendis nemo repellat sequi  adipisicing elit.",
-          button: "View All Process",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis nemo repellat unde earum.",
+          button: " All Get Started",
         },
         {
           id: 3,
-          img: "https://images.pexels.com/photos/3773579/pexels-photo-3773579.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-          title: "Office Design Made Affordable.",
+          imgLeft:
+            "https://images.pexels.com/photos/1457847/pexels-photo-1457847.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+          imgRight:
+            "https://images.pexels.com/photos/3255245/pexels-photo-3255245.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+          title: "Take our style quiz",
           descr:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis nemo repellat sequi  unde earum.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis nemo repellat unde earum.",
           button: "Get Started",
         },
-      ],
-      slideRight: [
-        "https://images.pexels.com/photos/3773579/pexels-photo-3773579.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        "https://images.pexels.com/photos/3255245/pexels-photo-3255245.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        "https://images.pexels.com/photos/3952038/pexels-photo-3952038.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       ],
     }
   },
   methods: {
-    setFirstSwiper(swiper) {
-      this.firstSwiper = swiper
+    nextSlide() {
+      if (this.activeSlide < this.slides.length) this.activeSlide++
     },
-    setSecondSwiper(swiper) {
-      this.secondSwiper = swiper
+    prevSlide() {
+      if (this.activeSlide > 1) this.activeSlide--
     },
   },
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @import "../../assets/scss/variables.scss";
 @import "../../assets/scss/navigation-carousel-hero.scss";
 
+.scroll-wrapper {
+  width: 94%;
+  height: 3px;
+  margin: 1.5rem;
+  background: #e0e6e8;
+  position: relative;
+  &__current {
+    position: absolute;
+    background: #0f393a;
+    top: -1px;
+    left: 0;
+    width: 50%;
+    height: 5px;
+  }
+}
+.hidden {
+  opacity: 0;
+}
+.carousel-current {
+  padding: 0 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 400;
+}
 .left-slide {
   margin-top: 8.4rem;
   width: 95%;
@@ -145,57 +171,28 @@ export default {
 .right-slide {
   padding: 0 2rem;
 }
-.swiper-container {
-  height: 100%;
-}
-.swiper-button-prev {
-  left: auto;
-  right: 90px;
-  top: 845px;
-  background-image: url("/img/arrow-left.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-}
-.swiper-button-prev::after,
-.swiper-button-next::after {
-  content: "";
-}
-.swiper-button-next {
-  right: 30px;
-  top: 845px;
-
-  background-image: url("/img/arrow-right.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-}
-.swiper-button-prev,
-.swiper-button-next {
-  border: 1px solid $primary-color;
-  border-radius: 50%;
-  // background: cornflowerblue;
-  width: 45px;
-  height: 45px;
-}
-.right-corousel {
+.slider-row {
   position: relative;
-  &__control {
+  height: 1130px;
+  &__wrapper {
     position: absolute;
-    top: 830px;
-    left: 40px;
-    font-size: 1.5rem;
-    font-weight: bold;
+    top: 0;
+    left: 0;
   }
 }
-.swiper-scrollbar {
-  bottom: 231px !important;
-  left: 1.8rem !important;
-  width: 93% !important;
-}
-.swiper-pagination {
-  bottom: 180px;
-  left: 0;
-  width: 15%;
-  font-size: 1.5rem;
-  font-weight: bold;
+.right-corousel {
+  &__control {
+    padding: 0 2rem;
+    margin-top: 3.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    z-index: 10;
+  }
+  .carousel__button {
+    display: flex;
+    margin-top: 3rem;
+    margin-left: auto;
+    margin-right: 2rem;
+  }
 }
 </style>
