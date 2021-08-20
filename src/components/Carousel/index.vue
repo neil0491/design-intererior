@@ -99,13 +99,14 @@ export default {
 
 .carousel {
   background-color: rgba($color: #f7fdfd, $alpha: 0.9);
-  padding: 6rem 0 4rem;
+  padding: 5rem 0 4rem;
 }
 .title-caousel {
   max-width: 800px;
   font-size: 2.7rem;
+  line-height: 1.5;
   font-weight: bold;
-  margin-bottom: 6rem;
+  margin-bottom: 5rem;
 }
 .slider {
   margin-left: 2rem;

@@ -1,5 +1,6 @@
 <template>
   <footer class="footer">
+    <CirculeFooter class="circule-footer" />
     <div class="container">
       <div class="row">
         <div class="col-6 d-flex">
@@ -62,10 +63,13 @@
 
 <script>
 import Logo from "../logo"
+import CirculeFooter from "./circule-footer.vue"
+
 export default {
   name: "Design-Footer",
   components: {
     Logo,
+    CirculeFooter,
   },
 }
 </script>
@@ -78,16 +82,12 @@ a {
 }
 .footer {
   position: relative;
-  &::before {
-    content: "";
+  padding: 9rem 0 4.5rem;
+  .circule-footer {
     position: absolute;
-    width: 234px;
-    height: 234px;
-    background-image: url("/img/footer-circule.svg");
     bottom: 0;
     left: 0;
   }
-  padding: 7.5rem 0;
   &__logo {
     flex: 2;
   }

@@ -42,6 +42,7 @@ export default {
   }
   &__description {
     line-height: 1.5;
+    margin-top: 1rem;
     color: $secondary-color;
   }
 }

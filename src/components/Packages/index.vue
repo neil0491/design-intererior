@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row package">
-      <div class="col pe-5">
+      <div class="col pr-8">
         <ImageContainer style="height: 674px" top>
           <img
             src="https://images.pexels.com/photos/5806989/pexels-photo-5806989.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"

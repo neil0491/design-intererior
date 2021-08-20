@@ -91,7 +91,7 @@ export default {
           img: "https://images.pexels.com/photos/3356416/pexels-photo-3356416.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
           title: "Take our style quiz",
           descr:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis nemo repellat sequi molestiae eius unde earum.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis nemo repellat sequi  unde earum.",
           button: "Get Started",
         },
         {
@@ -99,7 +99,7 @@ export default {
           img: "https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
           title: "Office Design Made Affordable.",
           descr:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit.Perferendis nemo repellat sequi molestiae eius adipisicing elit.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.Perferendis nemo repellat sequi  adipisicing elit.",
           button: "View All Process",
         },
         {
@@ -107,7 +107,7 @@ export default {
           img: "https://images.pexels.com/photos/3773579/pexels-photo-3773579.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
           title: "Office Design Made Affordable.",
           descr:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis nemo repellat sequi molestiae eius unde earum.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis nemo repellat sequi  unde earum.",
           button: "Get Started",
         },
       ],

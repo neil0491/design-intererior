@@ -3,33 +3,32 @@
     <div class="container">
       <div class="row">
         <div class="col-6">
-          <TitleBlock
-            class="mb-5"
-            :fs="2.65"
-            :fw="700"
-            :fsDesc="1.2"
-            :fwDesc="400"
-            title="Why Choose Us?"
-            description="Lorem, ipsum dolor adipisicing ipsum consectetur adipisicing elit. Officia vitae,onsectetur adipisicing amet consectetur adipisicing elit. Officiis nam quas possimus quae."
-          />
+          <div class="choose">
+            <h3 class="choose__title">Why Choose Us?</h3>
+            <p class="choose__descr">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae
+              voluptates aut expedita quasi odit ipsum rem temporibus aut
+              expedita quasi odit impedit odio perferendis.
+            </p>
+          </div>
         </div>
       </div>
-      <div class="row mt-4">
-        <div class="col-3">
+      <div class="iter">
+        <div class="iter__item">
           <IterebleBlock
             :number="1"
             title="No hassle"
             descr="Lorem, ipsum dolor adipisicing ipsum consectetur adipisicing elit. Officia vitae,onsectetur adipisicing amet"
           />
         </div>
-        <div class="col-3">
+        <div class="iter__item">
           <IterebleBlock
             :number="2"
             title="Saving"
             descr="Lorem, ipsum dolor adipisicing ipsum consectetur adipisicing elit. Officia vitae,onsectetur adipisicing amet"
           />
         </div>
-        <div class="col-3">
+        <div class="iter__item">
           <IterebleBlock
             :number="3"
             title="Choice"
@@ -42,18 +41,37 @@
 </template>
 
 <script>
-import TitleBlock from "../Title-Block/index.vue"
+// import TitleBlock from "../Title-Block/index.vue"
 import IterebleBlock from "../Itereble-block/index.vue"
 export default {
   name: "ChooseUs",
-  components: { TitleBlock, IterebleBlock },
+  components: { IterebleBlock },
 }
 </script>
 
 <style lang="scss" scoped>
+.choose {
+  &__title {
+    font-size: 2.65rem;
+    font-weight: 700;
+  }
+  &__descr {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+}
+.iter {
+  display: flex;
+  margin: 2.3rem -0.3rem 0;
+  &__item {
+    flex: 0 0 320px;
+    margin-right: 2.7rem;
+  }
+}
 .choose-block {
   background-color: rgba($color: #f7fdfd, $alpha: 0.9);
-  padding-top: 4.5rem;
-  padding-bottom: 5rem;
+  padding-top: 6.3rem;
+  padding-bottom: 6rem;
 }
 </style>

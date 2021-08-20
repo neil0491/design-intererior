@@ -12,6 +12,8 @@ export default {}
 </script>
 
 <style lang="scss" scoped>
+@import "../../assets/scss/variables.scss";
+
 .quote {
   display: flex;
   justify-content: center;

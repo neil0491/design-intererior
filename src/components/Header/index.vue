@@ -47,7 +47,7 @@ export default {
   list-style: none;
   height: 100%;
   font-size: 1.1rem;
-  margin: 0;
+  margin: 0 3rem;
   &__item {
     margin-right: 3.2rem;
   }

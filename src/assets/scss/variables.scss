@@ -1,4 +1,3 @@
-
 $main-text: #0f393a;
 $secondary-text: #668581;
 
@@ -13,10 +12,9 @@ $grid-breakpoints: (
   md: 768px,
   lg: 992px,
   xl: 1280px,
-  xxl: 1440px
+  xxl: 1440px,
 );
 
 $grid-columns: 12;
 $grid-gutter-width: 24px;
-
 $enable-grid-classes: true;

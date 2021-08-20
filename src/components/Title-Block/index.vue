@@ -1,11 +1,15 @@
 <template>
   <div class="block" :class="{ dark: dark }">
-    <h2
-      class="block__title mb-4"
-      :style="{ fontSize: fs + 'rem', fontWeight: fw }"
+    <h3
+      class="block__title"
+      :style="{
+        fontSize: fs + 'rem',
+        fontWeight: fw,
+        marginBottom: mbTitle + 'rem',
+      }"
     >
       {{ title }}
-    </h2>
+    </h3>
     <p
       class="block__description light-color"
       :style="{ fontSize: fsDesc + 'rem', fontWeight: fwDesc }"
@@ -43,6 +47,11 @@ export default {
     fwDesc: {
       type: Number,
       required: false,
+    },
+    mbTitle: {
+      type: Number,
+      required: false,
+      default: 2,
     },
     dark: {
       type: Boolean,
