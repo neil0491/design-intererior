@@ -43,6 +43,31 @@ img {
   object-fit: cover;
 }
 
+.btn-change {
+  border: 1px solid #0f393a;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+}
+.btn-next,
+.btn-prev {
+  background: transparent;
+  margin: 0 0.8rem;
+
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.btn-next {
+  background-image: url("/img/arrow-right.svg");
+}
+.btn-prev {
+  background-image: url("/img/arrow-left.svg");
+}
+
+.btn-disable {
+  opacity: 0.1;
+}
+
 .container {
   width: 100%;
   padding-right: 15px;

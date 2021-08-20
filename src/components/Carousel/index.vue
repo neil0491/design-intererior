@@ -1,43 +1,44 @@
 <template>
   <div class="carousel">
     <div class="container">
-      <h3 class="title-caousel">
-        Read our tips on designing and furnishing your office
-      </h3>
+      <div class="d-flex">
+        <h3 class="title-caousel">
+          Read our tips on designing and furnishing your office
+        </h3>
+        <div class="carousel__button">
+          <button
+            class="btn-change btn-prev"
+            :class="activeSlide !== 1 ? '' : 'btn-disable'"
+            @click="prevSlide"
+          ></button>
+          <button
+            class="btn-change btn-next"
+            :class="activeSlide !== this.slides.length ? '' : 'btn-disable'"
+            @click="nextSlide"
+          ></button>
+        </div>
+      </div>
     </div>
     <div class="slider">
-      <swiper
-        navigation
-        :slides-per-view="3"
-        :space-between="30"
-        :centeredSlides="true"
-      >
-        <swiper-slide v-for="slide in slides" :key="slide.id">
-          <div class="slider__carousel">
-            <img class="slider__image mb-4" :src="slide.url" alt="Interior" />
-            <h4 class="slider__title">{{ slide.title }}</h4>
-            <p class="slider__descr">{{ slide.descr }}</p>
-          </div>
-        </swiper-slide>
-      </swiper>
+      <div class="slider__wrap" :style="{ width: 500 * slides.lenght }">
+        <div
+          class="slider__slide"
+          :style="styleObject"
+          v-for="(slide, index) in slides"
+          :key="index"
+        >
+          <img class="slider__image mb-4" :src="slide.url" alt="Interior" />
+          <h4 class="slider__title">{{ slide.title }}</h4>
+          <p class="slider__descr">{{ slide.descr }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 <script>
-// Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from "swiper/vue"
-import SwiperCore, { Navigation } from "swiper"
-SwiperCore.use([Navigation])
-
-// Import Swiper styles
-// import "swiper/swiper.scss"
-
 export default {
-  components: {
-    Swiper,
-    SwiperSlide,
-  },
   data: () => ({
+    activeSlide: 1,
     slides: [
       {
         id: 1,
@@ -90,6 +91,22 @@ export default {
       },
     ],
   }),
+  computed: {
+    styleObject() {
+      const width = 0 - (this.activeSlide - 1) * 350
+      return {
+        transform: "translateX(" + width + "px)",
+      }
+    },
+  },
+  methods: {
+    nextSlide: function () {
+      if (this.activeSlide < this.slides.length) this.activeSlide++
+    },
+    prevSlide: function () {
+      if (this.activeSlide > 1) this.activeSlide--
+    },
+  },
 }
 </script>
 
@@ -100,6 +117,14 @@ export default {
 .carousel {
   background-color: rgba($color: #f7fdfd, $alpha: 0.9);
   padding: 5rem 0 4rem;
+  &__button {
+    border: none;
+  }
+  &__button {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+  }
 }
 .title-caousel {
   max-width: 800px;
@@ -110,7 +135,17 @@ export default {
 }
 .slider {
   margin-left: 2rem;
-  &__carousel {
+  overflow: hidden;
+  &__wrap {
+    width: 2800px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+  }
+  &__slide {
+    margin: 0 1rem;
+    width: 500px;
+    transition: all 0.5s ease-in-out;
   }
   &__image {
     height: 250px;
@@ -126,41 +161,4 @@ export default {
     color: $secondary-text;
   }
 }
-// .swiper-button-prev {
-//   left: auto;
-//   right: 0;
-//   top: 0;
-//   background: rebeccapurple;
-//   background-image: url("/img/arrow-left.svg");
-//   background-repeat: no-repeat;
-//   background-position: center;
-// }
-// .swiper-button-prev::after,
-// .swiper-button-next::after {
-//   // content: "";
-// }
-// .swiper-button-next {
-//   // right: 30px;
-//   // top: 845px;
-
-//   background-image: url("/img/arrow-right.svg");
-//   background-repeat: no-repeat;
-//   background-position: center;
-// }
-// .swiper-button-prev,
-// .swiper-button-next {
-//   border: 1px solid $primary-color;
-//   border-radius: 50%;
-//   // background: cornflowerblue;
-//   width: 45px;
-//   height: 45px;
-// }
-
-// .swiper-pagination {
-//   bottom: 180px;
-//   left: 0;
-//   width: 15%;
-//   font-size: 1.5rem;
-//   font-weight: bold;
-// }
 </style>
